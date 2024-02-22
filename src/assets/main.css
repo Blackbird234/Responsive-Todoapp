@@ -1,0 +1,493 @@
+@import './base.css';
+
+body {
+  margin: auto;
+  font-family: 'Roboto', sans-serif;
+  background-color: rgba(0,0,0,0.1)
+}
+
+header {
+  margin: 2rem;
+  background-image: linear-gradient(to left bottom, #f9ff78, #ffde6a, #ffbd6c, #ffa078, #ff8787);
+  box-shadow: 0px 2px 5px;
+  border-radius: 2rem;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 30% 70% ;
+  grid-template-rows: 10rem 10rem;
+  grid-template-areas: 
+  'logo h1'
+  'logo aufgaben';
+}
+
+.logo {
+  margin-top: 4rem;
+  width: 15rem;
+  height: 15rem;
+  grid-area: logo;
+}
+
+/* SVG-Buttons */
+.radio-svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+
+header h1 {
+  margin-top: 5rem;
+  font-size: 2rem;
+  grid-area: h1;
+  margin-left: 2rem;
+}
+
+header h1 p {
+  margin-top: -0.2rem;
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Zusatzuinformationen */
+.header-information {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  grid-area: aufgaben;
+  margin-left: 2rem;
+}
+
+
+/* radio buttons for done-,active- and all tasks */
+.radio-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  width: 40%;
+  margin:auto;
+  margin-top: 4rem;
+  margin-right: 2rem;
+  
+}
+
+.radio-button {
+  transition: ease 0.2s;
+  padding: 10px;
+}
+
+.radio-button:hover {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transform: scale(1.2);
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+}
+
+.tasklist {
+  width: 60%;
+}
+
+.activated {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  transform: scale(1.2);
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+  transition: ease 0.2s;
+}
+
+.activated:hover {
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transform: scale(1.2);
+  box-shadow: 0px 0px 0pc rgba(0,0,0,0.1);
+}
+
+
+/* Input field pop-out menu */
+.add-tasks {
+  display: flex;
+  gap: 20px;
+  height: 3rem;
+  margin-top: -5.5rem;
+  padding-top: 2rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.2);
+  margin-left: 2rem;
+  margin-right:2rem;
+  border-radius: 2rem;
+  transition: ease 1s;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.add-tasks:hover {
+  margin-top:-5rem;
+  height: 7rem;
+  background-image: linear-gradient(to bottom, #7c7c7c, #878787, #939393, #9e9e9e, #aaaaaa);
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.7)
+}
+
+.add-tasks button {
+  height: 2rem;
+  width: 10rem;
+  align-self: center;
+  margin-top: 2rem;
+  border-radius: 5px;
+  border: rgba(0,0,0,0);
+  cursor: pointer;
+  transition: ease 1s
+}
+
+#input-tasks {
+  margin-top: 2rem;
+  width: 60%;
+  height: 2rem;
+  border-radius: 5px;
+  border: rgba(0,0,0,0);
+  transition: ease 1s;
+}
+
+.add-tasks input::placeholder {
+  text-align: center;
+}
+
+#notch {
+  margin-top: 1.7rem;
+  width: 4rem;
+  height: 2px;
+  border-radius: 10rem;
+  background-color: black;
+  position: absolute;
+  animation: pulse 1s infinite;
+}
+
+
+/* Transition animation for input button and input field */
+.v-enter-active,.v-leave-active {
+  transition: all 0.5s ease;
+}
+
+.v-enter-from, .v-leave-to {
+  transform: translateY(-30px);
+  opacity: 0;
+}
+
+.notch-opacity-enter-active {
+  transition: opacity 3s ease;
+}
+
+.notch-opacity-leave-active {
+  transition: all 0.1s ease;
+}
+
+.notch-opacity-enter-from,.notch-opacity-leave-to {
+  opacity: 0;
+  transform: translateY(30px)
+} 
+
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Taskcard */
+main li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.taskcard {
+  background-color: rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  border-radius: 2rem;
+  margin: auto;
+  margin-right: 2.5rem;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+  margin-top: 1rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.taskcard:hover {
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
+  transform: scale(1.02);
+  background-color: rgba(0,0,0,0.16);
+  font-weight: 500;
+}
+
+.complete-taskcard, .complete-taskcard:hover {
+  background-color:rgba(60, 255, 0, 0.08);
+  text-decoration: line-through;
+}
+
+/* added tasks-text-field */
+.taskcard p {
+  margin-left: 1.5rem;
+  order: 2;
+  font-size: 18px;
+  width: 100%;
+}
+
+/* check Button in Taskcard */
+#task-button1 {
+  order: 1;
+  height: 6.6rem;
+  margin-top: -1.5rem;
+  margin-bottom: -1.5rem;
+  margin-left: -1.5rem;
+  padding-right: 0rem;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border: solid 0px;
+  background-color: transparent;
+  transition: all 1s ease;
+  justify-content: right;
+  align-items: center;
+  display: flex;
+}
+
+#task-button1:hover {
+  background-color: rgba(181, 235, 165, 0.437);
+  padding-right: 3rem;
+  cursor: pointer;
+}
+
+#task-button1 div {
+  width: 0.1rem;
+  height: 3rem;
+  margin-left: 0.4rem;
+  background-color: rgba(89, 134, 76, 0.237);
+  order:1;
+}
+
+#checkmark {
+  order: 1;
+  height: 60px;
+  width: 60px;
+  color: black;
+  margin-left: 2rem;
+}
+
+.button1-enter-active,.button1-leave-active {
+  transition: all 1s ease;
+}
+
+.button1-enter-from, .button1-leave-to {
+  transform: translateX(-10px);
+  opacity: 0;
+}
+
+/* clickevent check Button */
+.complete {
+  background-color: rgb(228, 186, 1);
+}
+
+/* Remove Button in Taskcard */
+#task-button2 {
+  order: 3;
+  height: 6.6rem;
+  margin-top: -1.5rem;
+  margin-bottom: -1.5rem;
+  margin-right: -1.5rem;
+  padding-left: 1rem;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  border: solid 0px;
+  background-color: transparent;
+  transition: all 1s ease;
+  justify-content: left;
+  align-items: center;
+  display: flex;
+}
+
+#task-button2:hover {
+  padding-left: 2rem;
+  background-color: rgba(255, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+#task-button2 div {
+  width: 0.1rem;
+  height: 3rem;
+  margin-right: 0.4rem;
+  background-color: rgba(255, 0, 0, 0.2);
+  order:2;
+}
+
+.button2-enter-active,.button2-leave-active {
+  transition: all 1s ease;
+}
+
+.button2-enter-from, .button2-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+#remove {
+  order: 1;
+  height: 60px;
+  width: 60px;
+  color: black;
+  margin-right: 2rem;
+}
+
+/* task Container */
+.Tasks-container {
+  border: 0px;
+  border-radius: 2rem;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  background-image: linear-gradient(to right, #f9ff78, #ffde6a, #ffbd6c, #ffa078, #ff8787);
+  box-shadow: 0px 2px 5px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.Tasks-container p {
+  padding: 0.7rem;
+  
+}
+
+/* username popup */
+.popup {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 110%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: -1rem;
+  z-index: 999;
+  background: rgba( 96, 95, 82, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 9px );
+  -webkit-backdrop-filter: blur( 9px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.popup-content {
+  display: flex;
+  border-radius: 2rem;
+  padding: 2rem;
+  background: rgba( 255, 160, 120, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  margin-bottom: 30rem;
+  flex-direction: column;
+  width: 30rem;
+  height: 8rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;  
+}
+
+.popup-content label {
+  font-size: 1.7rem;
+  font-style: italic;
+}
+
+.popup-content input {
+  width: 80%;
+  height: 2rem;
+  background: transparent;
+  border: 0px;
+  border-bottom: 1px solid black;
+  animation: pulse 1s;
+}
+
+.popup-content input:focus {
+  background-color: transparent;
+  color: black;
+  font-style: italic;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Popup Button Design */
+.close-button {
+  width: 10rem;
+  height: 2rem;
+  margin-top: 1rem;
+  border-radius: 2rem;
+  border: 2px solid #252525;
+  background-color: transparent;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.close-button:hover {
+  box-shadow: 1px 1px 200px #252525;
+  color: #fff;
+  border: none;
+}
+
+.state:hover::after {
+  visibility: visible;
+  transform: scale(100) translateX(2px);
+}
+
+.state::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.5s ease-in-out;
+  background-color: #333;
+  border-radius: 30px;
+  visibility: hidden;
+  height: 10px;
+  width: 10px;
+  z-index: -1;
+}
+
+.close-button p {
+  z-index: 1;
+  font-weight: 800;
+  letter-spacing: 4px
+}
+
+@media screen and (max-width: 800px) {
+  .header-information p {
+    display: none;
+  }
+  .radio-buttons {
+    margin-right: 5rem;
+  }
+  header {
+    min-width: 500px;
+  }
+  .add-tasks {
+    min-width: 500px
+  }
+  
+}
+
+
+
+
+
+
+
+
